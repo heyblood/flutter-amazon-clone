@@ -8,6 +8,9 @@ const authRouter = require('./routes/auth');
 const app = express();
 const PORT = 3000;
 
+// middleware
+app.use(authRouter);
+
 app.get('/', function (req, res) {
     res.json({
         msg: 'Hello World'
