@@ -67,10 +67,49 @@ class AuthService {
             Provider.of<UserProvider>(context, listen: false).setUser(res.body);
             await prefs.setString(
                 'x-auth-token', jsonDecode(res.body)['token']);
-            Navigator.pushNamedAndRemoveUntil(
-                context, HomeScreen.routeName, (route) => false);
+            // Navigator.pushNamedAndRemoveUntil(
+            //     context, HomeScreen.routeName, (route) => false);
+
+            Navigator.pushReplacementNamed(
+              context,
+              HomeScreen.routeName,
+            );
           });
     } catch (e) {
+      utils.showSnackBar(context, e.toString());
+    }
+  }
+
+  // get user  data
+  void getUserData({required BuildContext context}) async {
+    try {
+      final prefs = await SharedPreferences.getInstance();
+      final String? token = prefs.getString('x-auth-token');
+
+      if (token == null) {
+        await prefs.setString('x-auth-token', '');
+      }
+
+      var tokenRes = await http.post(
+          Uri.parse('${global_variables.url}/api/verify-token'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+            'x-auth-token': token!
+          });
+
+      var response = jsonDecode(tokenRes.body);
+      if (response == true) {
+        http.Response userRes = await http.get(
+            Uri.parse('${global_variables.url}/'),
+            headers: <String, String>{
+              'Content-Type': 'application/json; charset=UTF-8',
+              'x-auth-token': token
+            });
+        var userProvider = Provider.of<UserProvider>(context, listen: false);
+        userProvider.setUser(userRes.body);
+      }
+    } catch (e) {
+      // FIXME cannot work in initState method
       utils.showSnackBar(context, e.toString());
     }
   }
