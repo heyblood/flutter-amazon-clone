@@ -2,13 +2,14 @@
 
 import 'dart:convert';
 
+import 'package:amazon_clone/features/home_page.dart';
 import 'package:amazon_clone/constants/http_handler.dart';
 import 'package:amazon_clone/constants/global_variables.dart'
     as global_variables;
 import 'package:amazon_clone/constants/utils.dart' as utils;
-import 'package:amazon_clone/features/home/screens/home_screen.dart';
 import 'package:amazon_clone/models/user.dart';
 import 'package:amazon_clone/providers/user_provider.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -67,13 +68,11 @@ class AuthService {
             Provider.of<UserProvider>(context, listen: false).setUser(res.body);
             await prefs.setString(
                 'x-auth-token', jsonDecode(res.body)['token']);
-            // Navigator.pushNamedAndRemoveUntil(
-            //     context, HomeScreen.routeName, (route) => false);
 
-            Navigator.pushReplacementNamed(
-              context,
-              HomeScreen.routeName,
-            );
+            // FIXME: Null check operator used on a null value
+            // Navigator.pushNamedAndRemoveUntil(
+            //     context, HomePage.routeName, (route) => false);
+            Navigator.pushReplacementNamed(context, HomePage.routeName);
           });
     } catch (e) {
       utils.showSnackBar(context, e.toString());
@@ -88,13 +87,15 @@ class AuthService {
 
       if (token == null) {
         await prefs.setString('x-auth-token', '');
+        await prefs.remove('x-auth-token');
+        return;
       }
 
       var tokenRes = await http.post(
           Uri.parse('${global_variables.url}/api/verify-token'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
-            'x-auth-token': token!
+            'x-auth-token': token
           });
 
       var response = jsonDecode(tokenRes.body);
@@ -110,7 +111,8 @@ class AuthService {
       }
     } catch (e) {
       // FIXME cannot work in initState method
-      utils.showSnackBar(context, e.toString());
+      // utils.showSnackBar(context, e.toString());
+      debugPrint('getUserData - ${e.toString()}');
     }
   }
 }
