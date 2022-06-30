@@ -7,10 +7,11 @@ const authRouter = require('./routes/auth');
 
 // init
 const app = express();
-const port = process.env.PORT || 3000;
-const databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI || 'mongodb://localhost:27017/dev';
+const port = parseInt(process.env.PORT) || 3000;
+const mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/amazon_clone';
 
 // middleware
+app.use(express.json())
 app.use(authRouter);
 
 app.get('/', function (req, res) {
@@ -20,7 +21,7 @@ app.get('/', function (req, res) {
 });
 
 // Connections
-mongoose.connect(databaseUri)
+mongoose.connect(mongodbUri)
     .then(() => {
         console.log('MongoDB Connection Successful');
     })

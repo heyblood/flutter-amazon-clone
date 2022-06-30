@@ -17,12 +17,18 @@ const userScheme = mongoose.Schema({
 
                 return value.match(re);
             },
-            message: 'please enter a valid email address'
+            message: 'Please enter a valid email address'
         }
     },
     password: {
         required: true,
-        type: String
+        type: String,
+        validate: {
+            validator: (value) => {
+                return value.length > 6;
+            },
+            message: 'Please enter a longer password'
+        }
     },
     address: {
         type: String,
