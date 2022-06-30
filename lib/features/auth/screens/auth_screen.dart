@@ -106,7 +106,10 @@ class _AuthScreenState extends State<AuthScreen> {
                           const SizedBox(height: 10),
                           CustomButton(
                             text: 'Sign Up',
-                            onTap: () => signUpUser(),
+                            onTap: () => {
+                              if (_signUpFormKey.currentState!.validate())
+                                signUpUser()
+                            },
                           ),
                         ],
                       ),
