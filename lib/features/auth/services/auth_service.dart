@@ -4,8 +4,7 @@ import 'dart:convert';
 
 import 'package:amazon_clone/features/home_page.dart';
 import 'package:amazon_clone/constants/http_handler.dart';
-import 'package:amazon_clone/constants/global_variables.dart'
-    as global_variables;
+import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/constants/utils.dart' as utils;
 import 'package:amazon_clone/models/user.dart';
 import 'package:amazon_clone/providers/user_provider.dart';
@@ -28,7 +27,7 @@ class AuthService {
     try {
       User user = User(name: name, email: email, password: password);
       http.Response res = await http.post(
-          Uri.parse('${global_variables.url}/api/signup'),
+          Uri.parse('${GlobalVarialbles.API_SERVER_URL}/api/signup'),
           body: user.toJson(),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8'
@@ -52,7 +51,7 @@ class AuthService {
   }) async {
     try {
       http.Response res = await http.post(
-          Uri.parse('${global_variables.url}/api/signin'),
+          Uri.parse('${GlobalVarialbles.API_SERVER_URL}/api/signin'),
           body: jsonEncode({
             'email': email,
             'password': password,
@@ -92,7 +91,7 @@ class AuthService {
       }
 
       var tokenRes = await http.post(
-          Uri.parse('${global_variables.url}/api/verify-token'),
+          Uri.parse('${GlobalVarialbles.API_SERVER_URL}/api/verify-token'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
             'x-auth-token': token
@@ -101,7 +100,7 @@ class AuthService {
       var response = jsonDecode(tokenRes.body);
       if (response == true) {
         http.Response userRes = await http.get(
-            Uri.parse('${global_variables.url}/'),
+            Uri.parse('${GlobalVarialbles.API_SERVER_URL}/'),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
               'x-auth-token': token

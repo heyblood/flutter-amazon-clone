@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-// TODO replace with server url
-const url = 'http://192.168.1.105:3000';
-
 class GlobalVarialbles {
+// TODO replace with server url
+  static const API_SERVER_URL = 'http://192.168.1.105:3000';
+
   // COLORS
   static const appBarGradient = LinearGradient(
     colors: [
@@ -16,6 +16,6 @@ class GlobalVarialbles {
   static const secondaryColor = Color.fromRGBO(255, 153, 0, 1);
   static const backgroundColor = Colors.white;
   static const Color greyBackgroundColor = Color(0xffebecee);
-  static var selectedNavBarColor = Colors.cyan[800]!;
+  static const selectedNavBarColor = Color.fromRGBO(0, 131, 143, 1);
   static const unselectedNavBarColor = Colors.black87;
 }

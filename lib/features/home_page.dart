@@ -1,4 +1,5 @@
 import 'package:amazon_clone/constants/global_variables.dart';
+import 'package:amazon_clone/features/account/sccreens/account_screen.dart';
 import 'package:amazon_clone/features/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
@@ -15,11 +16,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
-  List<Widget> pages = [
+  List<Widget> pages = const [
     HomeScreen(),
-    Center(
-      child: Text('acoount screen'),
-    ),
+    AccountScreen(),
     Center(
       child: Text('cart screen'),
     ),
