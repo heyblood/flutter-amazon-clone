@@ -27,7 +27,7 @@ class AuthService {
     try {
       User user = User(name: name, email: email, password: password);
       http.Response res = await http.post(
-          Uri.parse('${GlobalVarialbles.API_SERVER_URL}/api/signup'),
+          Uri.parse('${GlobalVarialbles.apiServerUrl}/api/signup'),
           body: user.toJson(),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8'
@@ -51,7 +51,7 @@ class AuthService {
   }) async {
     try {
       http.Response res = await http.post(
-          Uri.parse('${GlobalVarialbles.API_SERVER_URL}/api/signin'),
+          Uri.parse('${GlobalVarialbles.apiServerUrl}/api/signin'),
           body: jsonEncode({
             'email': email,
             'password': password,
@@ -69,9 +69,11 @@ class AuthService {
                 'x-auth-token', jsonDecode(res.body)['token']);
 
             // FIXME: Null check operator used on a null value
-            // Navigator.pushNamedAndRemoveUntil(
-            //     context, HomePage.routeName, (route) => false);
-            Navigator.pushReplacementNamed(context, HomePage.routeName);
+            Future.delayed(Duration.zero, () {
+              Navigator.pushNamedAndRemoveUntil(
+                  context, HomePage.routeName, (route) => false);
+              // Navigator.pushReplacementNamed(context, HomePage.routeName);
+            });
           });
     } catch (e) {
       utils.showSnackBar(context, e.toString());
@@ -91,7 +93,7 @@ class AuthService {
       }
 
       var tokenRes = await http.post(
-          Uri.parse('${GlobalVarialbles.API_SERVER_URL}/api/verify-token'),
+          Uri.parse('${GlobalVarialbles.apiServerUrl}/api/verify-token'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
             'x-auth-token': token
@@ -100,7 +102,7 @@ class AuthService {
       var response = jsonDecode(tokenRes.body);
       if (response == true) {
         http.Response userRes = await http.get(
-            Uri.parse('${GlobalVarialbles.API_SERVER_URL}/'),
+            Uri.parse('${GlobalVarialbles.apiServerUrl}/'),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
               'x-auth-token': token

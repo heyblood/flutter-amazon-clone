@@ -19,7 +19,7 @@ class _TopBottonGroupState extends State<TopBottonGroup> {
             AccountButton(text: "Turn Seller", onTap: () {}),
           ],
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         Row(
           children: [
             AccountButton(text: "Log Out", onTap: () {}),

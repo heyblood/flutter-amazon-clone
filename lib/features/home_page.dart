@@ -1,5 +1,6 @@
 import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/features/account/sccreens/account_screen.dart';
+import 'package:amazon_clone/features/cart/screens/cart_screen.dart';
 import 'package:amazon_clone/features/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
@@ -19,9 +20,7 @@ class _HomePageState extends State<HomePage> {
   List<Widget> pages = const [
     HomeScreen(),
     AccountScreen(),
-    Center(
-      child: Text('cart screen'),
-    ),
+    CartScreen(),
   ];
 
   @override
@@ -37,12 +36,12 @@ class _HomePageState extends State<HomePage> {
         onTap: _onItemTap,
         items: [
           // HOME
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: 'Home',
           ),
           // ACCOUNT
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.person_outlined),
             label: 'Account',
           ),
@@ -50,9 +49,9 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Badge(
                 // elevation: 0,
-                badgeContent: Text('20', style: TextStyle(fontSize: 10)),
+                badgeContent: const Text('20', style: TextStyle(fontSize: 10)),
                 // badgeColor: Colors.white,
-                child: Icon(Icons.shopping_cart_outlined)),
+                child: const Icon(Icons.shopping_cart_outlined)),
             // icon: Container(),
             label: 'Cart',
           ),

@@ -31,6 +31,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final _authService = AuthService();
 
   void signUpUser() {
+    debugPrint("Start signUpUser...");
     _authService.signUpUser(
       context: context,
       name: _nameController.text,
@@ -40,6 +41,7 @@ class _AuthScreenState extends State<AuthScreen> {
   }
 
   void signInUser() {
+    debugPrint("Start signInUser...");
     _authService.signInUser(
       context: context,
       email: _emailController.text,
