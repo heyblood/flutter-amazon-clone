@@ -1,8 +1,8 @@
 import 'package:amazon_clone/constants/global_variables.dart';
-import 'package:amazon_clone/features/home/widgets/address_row.dart';
-import 'package:amazon_clone/features/home/widgets/carousel_image.dart';
-import 'package:amazon_clone/features/home/widgets/deal_of_day.dart';
-import 'package:amazon_clone/features/home/widgets/top_categories.dart';
+import 'package:amazon_clone/common/home/widgets/address_row.dart';
+import 'package:amazon_clone/common/home/widgets/carousel_image.dart';
+import 'package:amazon_clone/common/home/widgets/deal_of_day.dart';
+import 'package:amazon_clone/common/home/widgets/top_categories.dart';
 import 'package:amazon_clone/providers/user_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -1,7 +1,7 @@
 import 'package:amazon_clone/constants/global_variables.dart';
-import 'package:amazon_clone/features/account/widgets/below_app_bar.dart';
-import 'package:amazon_clone/features/account/widgets/account_button_group.dart';
-import 'package:amazon_clone/features/account/widgets/order_group.dart';
+import 'package:amazon_clone/common/account/widgets/below_app_bar.dart';
+import 'package:amazon_clone/common/account/widgets/account_button_group.dart';
+import 'package:amazon_clone/common/account/widgets/order_group.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatefulWidget {

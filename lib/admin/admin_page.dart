@@ -1,5 +1,5 @@
 import 'package:amazon_clone/constants/global_variables.dart';
-import 'package:amazon_clone/features/admin/screens/products_screen.dart';
+import 'package:amazon_clone/admin/products/screens/products_screen.dart';
 import 'package:flutter/material.dart';
 
 class AdminPage extends StatefulWidget {

@@ -1,7 +1,7 @@
 import 'package:amazon_clone/constants/global_variables.dart';
-import 'package:amazon_clone/features/account/sccreens/account_screen.dart';
-import 'package:amazon_clone/features/cart/screens/cart_screen.dart';
-import 'package:amazon_clone/features/home/screens/home_screen.dart';
+import 'package:amazon_clone/common/account/sccreens/account_screen.dart';
+import 'package:amazon_clone/common/cart/screens/cart_screen.dart';
+import 'package:amazon_clone/common/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
 

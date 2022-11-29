@@ -2,7 +2,7 @@
 
 import 'dart:convert';
 
-import 'package:amazon_clone/features/home_page.dart';
+import 'package:amazon_clone/common/home_page.dart';
 import 'package:amazon_clone/constants/http_handler.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/constants/utils.dart' as utils;

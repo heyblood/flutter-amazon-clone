@@ -1,7 +1,6 @@
 import 'package:amazon_clone/constants/global_variables.dart';
-import 'package:amazon_clone/features/account/widgets/order_card.dart';
+import 'package:amazon_clone/common/account/widgets/order_card.dart';
 import 'package:flutter/material.dart';
-
 
 // TODO replace with real product info list
 const productList = [
