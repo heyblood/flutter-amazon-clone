@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:amazon_clone/admin/admin_page.dart';
 import 'package:amazon_clone/common/home_page.dart';
 import 'package:amazon_clone/constants/http_handler.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
@@ -70,8 +71,13 @@ class AuthService {
 
             // FIXME: Null check operator used on a null value
             Future.delayed(Duration.zero, () {
+              final user = Provider.of<UserProvider>(context).user;
               Navigator.pushNamedAndRemoveUntil(
-                  context, HomePage.routeName, (route) => false);
+                  context,
+                  user.type == 'user'
+                      ? HomePage.routeName
+                      : AdminPage.routeName,
+                  (route) => false);
               // Navigator.pushReplacementNamed(context, HomePage.routeName);
             });
           });

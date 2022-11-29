@@ -32,6 +32,7 @@ class _MyAppState extends State<MyApp> {
   final AuthService _authService = AuthService();
   @override
   Widget build(BuildContext context) {
+    final user = Provider.of<UserProvider>(context).user;
     return MaterialApp(
       title: 'Amazon Clone',
       theme: ThemeData(
@@ -48,8 +49,8 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
       onGenerateRoute: (settings) => generateRoute(settings),
-      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? Provider.of<UserProvider>(context).user.type == 'user'
+      home: user.token.isNotEmpty
+          ? user.type == 'user'
               ? const HomePage()
               : const AdminPage()
           : const AuthScreen(),
