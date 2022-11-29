@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class GlobalVarialbles {
 // TODO replace with server url
-  static const apiServerUrl = 'http://192.168.137.1:3000';
+  static const apiServerUrl = 'http://10.218.69.247:3000';
 
   // COLORS
   static const appBarGradient = LinearGradient(
