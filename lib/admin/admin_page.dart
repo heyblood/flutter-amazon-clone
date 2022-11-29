@@ -3,6 +3,8 @@ import 'package:amazon_clone/admin/products/screens/products_screen.dart';
 import 'package:flutter/material.dart';
 
 class AdminPage extends StatefulWidget {
+  static const String routeName = '/admin';
+
   const AdminPage({super.key});
 
   @override
@@ -24,32 +26,35 @@ class _AdminPageState extends State<AdminPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: GlobalVarialbles.appBarGradient,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(50),
+        child: AppBar(
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: GlobalVarialbles.appBarGradient,
+            ),
           ),
-        ),
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              alignment: Alignment.topLeft,
-              child: Image.asset(
-                'assets/images/amazon_in.png',
-                width: 120,
-                height: 45,
-                color: Colors.black,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                alignment: Alignment.topLeft,
+                child: Image.asset(
+                  'assets/images/amazon_in.png',
+                  width: 120,
+                  height: 45,
+                  color: Colors.black,
+                ),
               ),
-            ),
-            const Text(
-              'Admin',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+              const Text(
+                'Admin',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       body: pages[_selectedIndex],

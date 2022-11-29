@@ -9,9 +9,16 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MultiProvider(providers: [
-    ChangeNotifierProvider(create: (context) => UserProvider()),
-  ], child: const MyApp()));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => UserProvider(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatefulWidget {
@@ -34,6 +41,7 @@ class _MyAppState extends State<MyApp> {
         ),
         appBarTheme: const AppBarTheme(
           elevation: 0,
+          foregroundColor: Colors.black,
           iconTheme: IconThemeData(
             color: Colors.black,
           ),

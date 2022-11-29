@@ -50,4 +50,12 @@ class GlobalVarialbles {
       'image': 'assets/images/fashion.jpeg',
     },
   ];
+
+  static const List<String> productCateguries = [
+    'Mobiles',
+    'Essentials',
+    'Appliances',
+    'Books',
+    'Fashion',
+  ];
 }
