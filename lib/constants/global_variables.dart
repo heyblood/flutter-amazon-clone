@@ -1,9 +1,8 @@
+import 'package:amazon_clone/env/env.dart';
 import 'package:flutter/material.dart';
 
 class GlobalVarialbles {
-// TODO replace with server url
-  // static const apiServerUrl = 'http://10.218.69.247:3000';
-  static const apiServerUrl = 'https://17a51567.cpolar.top';
+  static const apiBaseUrl = Env.apiBaseUrl;
 
   // COLORS
   static const appBarGradient = LinearGradient(

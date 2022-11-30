@@ -42,6 +42,7 @@ dependencies:
   dotted_border: ^2.0.0+3
   file_picker: ^5.2.2
   cloudinary_public: ^0.20.0
+  envied: ^0.3.0
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +54,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  build_runner: ^2.3.2
+  envied_generator: ^0.3.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

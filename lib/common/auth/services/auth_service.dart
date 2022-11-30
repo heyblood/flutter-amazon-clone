@@ -28,7 +28,7 @@ class AuthService {
     try {
       User user = User(name: name, email: email, password: password);
       http.Response res = await http.post(
-          Uri.parse('${GlobalVarialbles.apiServerUrl}/api/signup'),
+          Uri.parse('${GlobalVarialbles.apiBaseUrl}/api/signup'),
           body: user.toJson(),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8'
@@ -52,7 +52,7 @@ class AuthService {
   }) async {
     try {
       http.Response res = await http.post(
-          Uri.parse('${GlobalVarialbles.apiServerUrl}/api/signin'),
+          Uri.parse('${GlobalVarialbles.apiBaseUrl}/api/signin'),
           body: jsonEncode({
             'email': email,
             'password': password,
@@ -99,7 +99,7 @@ class AuthService {
       }
 
       var tokenRes = await http.post(
-          Uri.parse('${GlobalVarialbles.apiServerUrl}/api/verify-token'),
+          Uri.parse('${GlobalVarialbles.apiBaseUrl}/api/verify-token'),
           headers: <String, String>{
             'Content-Type': 'application/json; charset=UTF-8',
             'x-auth-token': token
@@ -108,7 +108,7 @@ class AuthService {
       var response = jsonDecode(tokenRes.body);
       if (response == true) {
         http.Response userRes = await http.get(
-            Uri.parse('${GlobalVarialbles.apiServerUrl}/'),
+            Uri.parse('${GlobalVarialbles.apiBaseUrl}/'),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
               'x-auth-token': token

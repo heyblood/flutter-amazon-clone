@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:amazon_clone/env/env.dart';
 import 'package:cloudinary_public/cloudinary_public.dart';
 
 /// Singleton [CloudinaryClient] to upload images
@@ -8,7 +9,8 @@ class CloudinaryClient {
 
   static final instance = CloudinaryClient._();
   CloudinaryClient._() {
-    cloudinary = CloudinaryPublic('dr9dix1oh', 'n2jybjww');
+    cloudinary =
+        CloudinaryPublic(Env.cloudinaryCloudName, Env.cloudinaryUploadPreset);
   }
 
   /// folder in Cloudinary's media library

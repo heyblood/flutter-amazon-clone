@@ -41,7 +41,7 @@ class AdminService {
       );
 
       http.Response response = await http.post(
-        Uri.parse('${GlobalVarialbles.apiServerUrl}/admin/add-product'),
+        Uri.parse('${GlobalVarialbles.apiBaseUrl}/admin/add-product'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': user.token,
