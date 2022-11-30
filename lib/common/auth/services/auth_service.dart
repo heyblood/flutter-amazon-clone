@@ -4,9 +4,9 @@ import 'dart:convert';
 
 import 'package:amazon_clone/admin/admin_page.dart';
 import 'package:amazon_clone/common/home_page.dart';
+import 'package:amazon_clone/constants/extensions.dart';
 import 'package:amazon_clone/constants/http_handler.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
-import 'package:amazon_clone/constants/utils.dart' as utils;
 import 'package:amazon_clone/models/user.dart';
 import 'package:amazon_clone/providers/user_provider.dart';
 import 'package:flutter/cupertino.dart';
@@ -37,10 +37,10 @@ class AuthService {
           response: res,
           context: context,
           onSuccess: () {
-            utils.showSnackBar(context, 'Account created!');
+            context.showSnackBar(message: 'Account created!');
           });
     } catch (e) {
-      utils.showSnackBar(context, e.toString());
+      context.showErrorSnackBar(message: e.toString());
     }
   }
 
@@ -82,7 +82,7 @@ class AuthService {
             });
           });
     } catch (e) {
-      utils.showSnackBar(context, e.toString());
+      context.showErrorSnackBar(message: e.toString());
     }
   }
 
@@ -117,9 +117,7 @@ class AuthService {
         userProvider.setUser(userRes.body);
       }
     } catch (e) {
-      // FIXME cannot work in initState method
-      // utils.showSnackBar(context, e.toString());
-      debugPrint('getUserData - ${e.toString()}');
+      context.showErrorSnackBar(message: e.toString());
     }
   }
 }

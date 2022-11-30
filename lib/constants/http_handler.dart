@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:amazon_clone/constants/utils.dart' as utils;
+import 'package:amazon_clone/constants/extensions.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,12 +14,12 @@ void handleHttpResponse({
       onSuccess();
       break;
     case 400:
-      utils.showSnackBar(context, jsonDecode(response.body)['msg']);
+      context.showSnackBar(message: jsonDecode(response.body)['msg']);
       break;
     case 500:
-      utils.showSnackBar(context, jsonDecode(response.body)['error']);
+      context.showErrorSnackBar(message: jsonDecode(response.body)['error']);
       break;
     default:
-      utils.showSnackBar(context, jsonDecode(response.body));
+      context.showErrorSnackBar(message: jsonDecode(response.body));
   }
 }

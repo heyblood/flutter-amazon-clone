@@ -156,7 +156,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
   }
 
   void selectImages() async {
-    List<File> images = await pickImageFiles();
+    List<File> images = await pickImageFiles(context);
     setState(() {
       selectedImages.clear();
       selectedImages.addAll(images);

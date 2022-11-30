@@ -3,6 +3,7 @@ import 'package:amazon_clone/admin/admin_page.dart';
 import 'package:amazon_clone/common/auth/screens/auth_screen.dart';
 import 'package:amazon_clone/common/auth/services/auth_service.dart';
 import 'package:amazon_clone/common/home_page.dart';
+import 'package:amazon_clone/constants/scaffold_messenger_key.dart';
 import 'package:amazon_clone/providers/user_provider.dart';
 import 'package:amazon_clone/router.dart';
 import 'package:flutter/material.dart';
@@ -35,6 +36,7 @@ class _MyAppState extends State<MyApp> {
     final user = Provider.of<UserProvider>(context).user;
     return MaterialApp(
       title: 'Amazon Clone',
+      scaffoldMessengerKey: rootScaffoldMessengerKey,
       theme: ThemeData(
         scaffoldBackgroundColor: GlobalVarialbles.backgroundColor,
         colorScheme: const ColorScheme.light(
