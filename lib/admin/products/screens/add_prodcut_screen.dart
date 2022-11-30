@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:amazon_clone/admin/services/admin_service.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/constants/utils.dart';
 import 'package:amazon_clone/widgets/custom_button.dart';
@@ -23,8 +24,27 @@ class _AddProductScreenState extends State<AddProductScreen> {
   final TextEditingController _priceController = TextEditingController();
   final TextEditingController _quantityController = TextEditingController();
 
-  String? categoryValue = GlobalVarialbles.productCateguries.first;
+  final _addProductFormKey = GlobalKey<FormState>();
+
+  final AdminService adminService = AdminService();
+
+  String categoryValue = GlobalVarialbles.productCateguries.first;
   List<File> selectedImages = [];
+
+  void sellProduct() async {
+    if (_addProductFormKey.currentState!.validate() &&
+        selectedImages.isNotEmpty) {
+      adminService.sellProduct(
+          context: context,
+          name: _productNameController.text,
+          description: _descriptionController.text,
+          price: double.parse(_priceController.text),
+          quantity: double.parse(_quantityController.text),
+          category: categoryValue,
+          imageFiles: selectedImages);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +61,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _addProductFormKey,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 16),
             child: Column(
@@ -127,7 +148,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                         .toList(),
                     onChanged: (String? value) {
                       setState(() {
-                        categoryValue = value;
+                        categoryValue = value!;
                       });
                     },
                     icon: const Icon(Icons.keyboard_arrow_down),
@@ -136,7 +157,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 const SizedBox(height: 10),
                 CustomButton(
                   text: 'Sell',
-                  onTap: () {},
+                  onTap: sellProduct,
                 ),
               ],
             ),

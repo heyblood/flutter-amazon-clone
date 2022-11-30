@@ -1,9 +1,9 @@
 // import from packages
 const express = require('express');
 const mongoose = require('mongoose');
-
 // import from other files
 const authRouter = require('./routes/auth');
+const adminRouter = require('./routes/admin');
 
 // init
 const app = express();
@@ -11,8 +11,9 @@ const port = parseInt(process.env.PORT) || 3000;
 const mongodbUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/amazon_clone';
 
 // middleware
-app.use(express.json())
+app.use(express.json());
 app.use(authRouter);
+app.use(adminRouter);
 
 app.get('/', function (req, res) {
     res.json({

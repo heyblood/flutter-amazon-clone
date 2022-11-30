@@ -101,7 +101,7 @@ authRouter.post('/api/verify-token', async (req, res) => {
 
 
 // get user data
-authRouter.get("/", auth, async (req, res) => {
+authRouter.post("/", auth, async (req, res) => {
     const user = await User.findById(req.user);
     if (!user) {
         return res.status(400).json({
@@ -110,7 +110,7 @@ authRouter.get("/", auth, async (req, res) => {
     }
     res.json({
         ...user._doc,
-        token: req.token
+        token: req.token,
     });
 });
 
