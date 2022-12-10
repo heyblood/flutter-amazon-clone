@@ -15,12 +15,6 @@ app.use(express.json());
 app.use(authRouter);
 app.use(adminRouter);
 
-app.get('/', function (req, res) {
-    res.json({
-        msg: 'Hello World'
-    });
-});
-
 // Connections
 mongoose.connect(mongodbUri)
     .then(() => {

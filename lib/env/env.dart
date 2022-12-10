@@ -11,6 +11,6 @@ abstract class Env {
   @EnviedField(varName: 'CLOUDINARY_UPLOAD_PRESET', obfuscate: true)
   static final cloudinaryUploadPreset = _Env.cloudinaryUploadPreset;
 
-  @EnviedField(varName: 'API_BASR_URL')
+  @EnviedField(varName: 'API_BASE_URL')
   static const apiBaseUrl = _Env.apiBaseUrl;
 }
