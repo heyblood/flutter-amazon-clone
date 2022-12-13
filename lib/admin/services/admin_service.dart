@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:amazon_clone/constants/cloudinary_client.dart';
@@ -16,8 +17,8 @@ class AdminService {
     required BuildContext context,
     required String name,
     required String description,
-    required double price,
-    required double quantity,
+    required int price,
+    required int quantity,
     required String category,
     required List<File> imageFiles,
   }) async {
@@ -40,7 +41,7 @@ class AdminService {
         images: imageUrls,
       );
 
-      http.Response response = await http.post(
+      http.Response res = await http.post(
         Uri.parse('${GlobalVarialbles.apiBaseUrl}/admin/add-product'),
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
@@ -50,7 +51,7 @@ class AdminService {
       );
 
       handleHttpResponse(
-        response: response,
+        response: res,
         context: context,
         onSuccess: () {
           context.showSnackBar(message: 'Product added Successfully!');
@@ -60,5 +61,52 @@ class AdminService {
     } catch (e) {
       context.showErrorSnackBar(message: e.toString());
     }
+  }
+
+  // get all the products
+  Future<List<Product>> fetchAllProducts({
+    required BuildContext context,
+  }) async {
+    final user = Provider.of<UserProvider>(context, listen: false).user;
+    List<Product> productList = [];
+    try {
+      http.Response res = await http.get(
+          Uri.parse('${GlobalVarialbles.apiBaseUrl}/admin/products'),
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            'x-auth-token': user.token,
+          });
+
+      handleHttpResponse(
+        response: res,
+        context: context,
+        onSuccess: () {
+          for (int i = 0; i < jsonDecode(res.body).length; i++) {
+            productList.add(
+              Product.fromJson(
+                jsonEncode(
+                  jsonDecode(res.body)[i],
+                ),
+                //     jsonEncode({
+                //   "_id": "639835f01adff06cba9da73e",
+                //   "name": "first. product",
+                //   "description": "djznnz have n,ndhdhhc",
+                //   "images": [
+                //     "https://res.cloudinary.com/vn4vcthms/image/upload/v1670919651/amazon_clone/first.%20product%20/h1paphkx4e6tyzlj78eu.jpg"
+                //   ],
+                //   "quantity": 23,
+                //   "price": 3737,
+                //   "category": "Mobiles",
+                //   "__v": 0
+                // }),
+              ),
+            );
+          }
+        },
+      );
+    } catch (e) {
+      context.showErrorSnackBar(message: e.toString());
+    }
+    return productList;
   }
 }

@@ -15,7 +15,7 @@ class _AdminPageState extends State<AdminPage> {
   int _selectedIndex = 0;
 
   List<Widget> pages = const [
-    PProductsScreen(),
+    ProductsScreen(),
     Center(
       child: Text('Analytics page'),
     ),

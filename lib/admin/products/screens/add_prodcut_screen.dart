@@ -38,8 +38,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
           context: context,
           name: _productNameController.text,
           description: _descriptionController.text,
-          price: double.parse(_priceController.text),
-          quantity: double.parse(_quantityController.text),
+          price: int.parse(_priceController.text),
+          quantity: int.parse(_quantityController.text),
           category: categoryValue,
           imageFiles: selectedImages);
     }

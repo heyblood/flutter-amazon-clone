@@ -1,5 +1,5 @@
 import 'package:amazon_clone/constants/global_variables.dart';
-import 'package:amazon_clone/common/account/widgets/order_card.dart';
+import 'package:amazon_clone/common/account/widgets/single_product.dart';
 import 'package:flutter/material.dart';
 
 // TODO replace with real product info list
@@ -49,7 +49,7 @@ class _OrderGroupState extends State<OrderGroup> {
             scrollDirection: Axis.horizontal,
             itemCount: productList.length,
             itemBuilder: (BuildContext context, int index) {
-              return OrderCard(imageUrl: productList.elementAt(index));
+              return SingleProduct(imageUrl: productList.elementAt(index));
             },
           ),
         ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class OrderCard extends StatelessWidget {
+class SingleProduct extends StatelessWidget {
   final String imageUrl;
 
-  const OrderCard({Key? key, required this.imageUrl}) : super(key: key);
+  const SingleProduct({Key? key, required this.imageUrl}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,7 +11,10 @@ class OrderCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 5),
       child: DecoratedBox(
         decoration: BoxDecoration(
-          border: Border.all(color: Colors.black12, width: 1.5),
+          border: Border.all(
+            color: Colors.black12,
+            width: 1.5,
+          ),
           borderRadius: BorderRadius.circular(5),
         ),
         child: Container(
