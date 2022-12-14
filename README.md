@@ -1,6 +1,6 @@
 # Amazon Clone
 
-Flutter - Full Stack Amazon Clone along with Admin Panel
+Flutter - Full Stack Amazon Clone along with Admin Panel.
 
 check out tutorial on YouTube channel [Rivaan Ranawat](https://youtu.be/O3nmP-lZAdg) 
 
@@ -31,26 +31,39 @@ check out tutorial on YouTube channel [Rivaan Ranawat](https://youtu.be/O3nmP-l
 
 ## Running Locally
 
-After cloning this repository, migrate to `flutter-amazon-clone-tutorial` folder. Then, follow the following steps:
+After cloning this repository, migrate to `flutter-amazon-clone` folder. Then, follow the following steps:
 
 - Create MongoDB Project & Cluster
-- Click on Connect, follow the process where you will get the uri.- Replace the MongoDB uri with yours in `server/index.js`.
-- Head to `lib/constants/global_variables.dart` file, replace with your IP Address.
+- Click on Connect, follow the process where you will get the uri.
+- Replace the MongoDB uri with yours in `server/.env` (copy from `server/.env.example`).
 - Create Cloudinary Project, enable unsigned operation in settings.
-- Head to `lib/features/admin/services/admin_services.dart`, replace `denfgaxvg` and `uszbstnu` with your Cloud Name and Upload Preset respectively.
+- Copy `.env.example` to `.env`, replace `CLOUDINARY_CLOUD_NAME` and `CLOUDINARY_UPLOAD_PRESET` with your Cloud Name and Upload Preset respectively.
+- Head to `.env` file, replace `API_BASE_URL` with your IP Address.
 
 Then run the following commands to run your app:
 
-### Server Side
+### Server Side (API Serever)
+
+run in `flutter-amazon-clone/server` folder
 
 ```shell
-  cd server  npm install  npm run dev (for continuous development)  OR  npm start (to run script 1 time)
+cd server
+
+npm install
+
+npm run dev
+ # or
+npm start
 ```
 
 ### Client Side
 
+run in `flutter-amazon-clone` folder
+
 ```shell
-  flutter pub get  open -a simulator (to get iOS Simulator)  flutter run
+flutter pub get
+
+flutter run
 ```
 
 ## Used
